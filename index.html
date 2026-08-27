@@ -117,6 +117,15 @@
     .btn-primary:active { transform: scale(0.97); }
     .btn-secondary { background: var(--color-surface); color: var(--color-primary); border: 1.5px solid var(--color-primary); }
     .btn-danger { background: var(--color-danger); color: white; }
+    
+    /* Estilo especial para el botón de instalar */
+    #installBtn {
+      background: #27ae60 !important;
+      margin-top: 8px;
+    }
+    #installBtn svg {
+      margin-right: 8px;
+    }
 
     .canvas-wrapper { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: var(--canvas-bg); }
     #drawCanvas { display: block; width: 100%; height: 100%; touch-action: none; cursor: crosshair; }
@@ -327,6 +336,12 @@
           <button class="btn-primary" data-view="canvas">Nuevo dibujo</button>
           <button class="btn-secondary" data-view="gallery">Ver galería</button>
           <button class="btn-secondary" data-view="settings">Configuración</button>
+          
+          <!-- Botón de instalación que aparece solo cuando es posible -->
+          <button id="installBtn" class="btn-primary" style="display: none;">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+            Instalar App
+          </button>
         </div>
       </div>
     </section>
@@ -443,8 +458,40 @@
       viewModal: $('viewModal'), modalImage: $('modalImage'), modalClose: $('modalClose'), modalDelete: $('modalDelete'), modalEdit: $('modalEdit'), 
       toast: $('toast'), darkModeToggle: $('darkModeToggle'), themeColor: $('themeColor'),
       voiceProgress: $('voiceProgress'),
-      magicKeywordInput: $('magicKeywordInput'), btnSaveMagicDrawing: $('btnSaveMagicDrawing'), magicDrawingsList: $('magicDrawingsList')
+      magicKeywordInput: $('magicKeywordInput'), btnSaveMagicDrawing: $('btnSaveMagicDrawing'), magicDrawingsList: $('magicDrawingsList'),
+      installBtn: $('installBtn')
     };
+
+    // --- INSTALACIÓN PWA INMEDIATA ---
+    let deferredPrompt;
+    
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault(); // Evita que el navegador muestre el prompt automáticamente
+      deferredPrompt = e;
+      if (DOM.installBtn) {
+        DOM.installBtn.style.display = 'inline-flex'; // Muestra el botón de instalar
+      }
+    });
+
+    if (DOM.installBtn) {
+      DOM.installBtn.addEventListener('click', async () => {
+        if (deferredPrompt) {
+          deferredPrompt.prompt(); // Fuerza la ventana de instalación inmediatamente
+          const { outcome } = await deferredPrompt.userChoice;
+          if (outcome === 'accepted') {
+            console.log('Usuario aceptó la instalación');
+          }
+          deferredPrompt = null;
+          DOM.installBtn.style.display = 'none';
+        }
+      });
+    }
+
+    window.addEventListener('appinstalled', () => {
+      console.log('App instalada con éxito');
+      if (DOM.installBtn) DOM.installBtn.style.display = 'none';
+      deferredPrompt = null;
+    });
 
     function normalizeText(text) {
       return text.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
