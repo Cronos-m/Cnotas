@@ -4,7 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="theme-color" content="#0d4f7a" id="themeColor">
-  <title>Cnotas</title>
+  <meta name="description" content="Bloc de dibujo mágico con reconocimiento de voz">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="CDraw">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/png" href="data:image/png;base64,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">
+  <link rel="apple-touch-icon" href="data:image/png;base64,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">
+  <title>CDraw</title>
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -280,7 +287,7 @@
 
   <header class="app-header">
     <button class="menu-btn" id="menuBtn"><span></span><span></span><span></span></button>
-    <h1 class="header-title" id="headerTitle">Cnotas</h1>
+    <h1 class="header-title" id="headerTitle">CDraw</h1>
   </header>
 
   <nav class="side-menu" id="sideMenu">
@@ -314,7 +321,7 @@
     <section class="view scrollable" id="view-home">
       <div class="home-container">
         <div class="home-logo"></div>
-        <h2>Bienvenido a Cnotas</h2>
+        <h2>Bienvenido a CDraw</h2>
         <p>Tu bloc de dibujo mágico</p>
         <div class="home-actions">
           <button class="btn-primary" data-view="canvas">Nuevo dibujo</button>
@@ -421,7 +428,7 @@
 
     let isVoiceActive = false;
     let recognition = null;
-    let isTriggering = false; // Previene disparos múltiples por la misma frase
+    let isTriggering = false;
 
     const $ = id => document.getElementById(id);
     const DOM = {
@@ -439,9 +446,7 @@
       magicKeywordInput: $('magicKeywordInput'), btnSaveMagicDrawing: $('btnSaveMagicDrawing'), magicDrawingsList: $('magicDrawingsList')
     };
 
-    // --- UTILIDADES ---
     function normalizeText(text) {
-      // Convierte a minúsculas y elimina tildes para que "BIGOTES", "bigotes" y "bigotés" sean iguales
       return text.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
     }
 
@@ -453,9 +458,8 @@
       window.toastTimer = setTimeout(() => DOM.toast.classList.remove('visible'), 2000);
     }
 
-    // --- DIBUJOS MÁGICOS ---
     function initMagicDrawings() {
-      let md = localStorage.getItem('cnotas_magic_drawings');
+      let md = localStorage.getItem('cdraw_magic_drawings');
       if (!md) {
         const defaults = {};
         const tempCanvas = document.createElement('canvas');
@@ -488,13 +492,13 @@
         defaults['four'] = defaults['cuatro'];
         defaults['five'] = defaults['cinco'];
 
-        localStorage.setItem('cnotas_magic_drawings', JSON.stringify(defaults));
+        localStorage.setItem('cdraw_magic_drawings', JSON.stringify(defaults));
       }
       renderMagicDrawingsList();
     }
 
     function getMagicDrawings() {
-      try { return JSON.parse(localStorage.getItem('cnotas_magic_drawings') || '{}'); } 
+      try { return JSON.parse(localStorage.getItem('cdraw_magic_drawings') || '{}'); } 
       catch { return {}; }
     }
 
@@ -534,7 +538,7 @@
           const enMap = {'gato':'cat','fuego':'fire','uno':'one','dos':'two','tres':'three','cuatro':'four','cinco':'five'};
           if (enMap[key]) delete currentMd[enMap[key]];
           
-          localStorage.setItem('cnotas_magic_drawings', JSON.stringify(currentMd));
+          localStorage.setItem('cdraw_magic_drawings', JSON.stringify(currentMd));
           if (state.editingMagicKeyword === key) {
             state.editingMagicKeyword = null;
             DOM.magicKeywordInput.value = '';
@@ -576,7 +580,6 @@
       }
     }
 
-    // --- RECONOCIMIENTO DE VOZ ---
     function setupSpeechRecognition() {
       const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
       if (!SpeechRecognition) {
@@ -587,11 +590,10 @@
       recognition = new SpeechRecognition();
       recognition.lang = 'es-ES';
       recognition.continuous = true;
-      recognition.interimResults = true; // CRÍTICO: permite detectar palabras dentro de una frase larga
+      recognition.interimResults = true;
 
       recognition.onresult = (event) => {
         let fullTranscript = "";
-        // Recorremos todos los resultados para capturar palabras dichas al inicio de la frase
         for (let i = 0; i < event.results.length; ++i) {
           fullTranscript += event.results[i][0].transcript + " ";
         }
@@ -599,18 +601,15 @@
         const normalizedTranscript = normalizeText(fullTranscript);
         const md = getMagicDrawings();
 
-        // Buscamos si ALGUNA palabra clave está contenida en lo que se dijo
         for (const [keyword, dataUrl] of Object.entries(md)) {
           const normalizedKeyword = normalizeText(keyword);
           if (normalizedTranscript.includes(normalizedKeyword)) {
-            if (isTriggering) return; // Evita disparos múltiples mientras se dice la palabra
+            if (isTriggering) return;
             
             isTriggering = true;
             console.log(`[Voz] Palabra clave detectada: "${keyword}" en "${fullTranscript}"`);
             
             loadMagicDrawingToCanvas(dataUrl);
-            
-            // Reinicia el flag después de 2 segundos para permitir la siguiente detección
             setTimeout(() => { isTriggering = false; }, 2000);
             break; 
           }
@@ -665,7 +664,6 @@
       }, 200);
     }
 
-    // --- NAVEGACIÓN ---
     function navigateTo(viewName) {
       if (state.currentView === 'canvas' && viewName !== 'canvas') {
         state.editingId = null;
@@ -678,8 +676,8 @@
       if (DOM.views[viewName]) DOM.views[viewName].classList.remove('hidden');
       state.currentView = viewName;
       
-      const titles = { home: 'Cnotas', canvas: 'Dibujar', gallery: 'Galería', settings: 'Configuración' };
-      if (DOM.headerTitle) DOM.headerTitle.textContent = titles[viewName] || 'Cnotas';
+      const titles = { home: 'CDraw', canvas: 'Dibujar', gallery: 'Galería', settings: 'Configuración' };
+      if (DOM.headerTitle) DOM.headerTitle.textContent = titles[viewName] || 'CDraw';
 
       if (viewName === 'canvas') {
         requestAnimationFrame(() => {
@@ -697,7 +695,6 @@
     function openMenu() { if (DOM.sideMenu) DOM.sideMenu.classList.add('open'); }
     function closeMenu() { if (DOM.sideMenu) DOM.sideMenu.classList.remove('open'); }
 
-    // --- CANVAS ---
     function initCanvas() {
       canvas = $('drawCanvas');
       if (!canvas) return;
@@ -829,21 +826,20 @@
 
     function exportImage() { return canvas.toDataURL('image/png'); }
 
-    // --- GALERÍA Y ALMACENAMIENTO ---
-    function getGallery() { try { return JSON.parse(localStorage.getItem('cnotas_gallery') || '[]'); } catch { return []; } }
+    function getGallery() { try { return JSON.parse(localStorage.getItem('cdraw_gallery') || '[]'); } catch { return []; } }
 
     function saveToGallery(dataUrl) {
       try {
         const gallery = getGallery();
         gallery.unshift({ id: Date.now().toString(36) + Math.random().toString(36).slice(2, 7), dataUrl, date: new Date().toISOString() });
-        localStorage.setItem('cnotas_gallery', JSON.stringify(gallery));
+        localStorage.setItem('cdraw_gallery', JSON.stringify(gallery));
         showToast('Dibujo guardado');
       } catch (e) { showToast('Almacenamiento lleno'); }
     }
 
     function deleteFromGallery(id) {
       const gallery = getGallery().filter(item => item.id !== id);
-      localStorage.setItem('cnotas_gallery', JSON.stringify(gallery));
+      localStorage.setItem('cdraw_gallery', JSON.stringify(gallery));
       renderGallery();
       closeModal();
       showToast('Dibujo eliminado');
@@ -884,10 +880,9 @@
       currentModalId = null;
     }
 
-    // --- CONFIGURACIÓN ---
     function loadSettings() {
       try {
-        const settings = JSON.parse(localStorage.getItem('cnotas_settings') || '{}');
+        const settings = JSON.parse(localStorage.getItem('cdraw_settings') || '{}');
         if (settings.bgColor && DOM.settingBgColor) DOM.settingBgColor.value = settings.bgColor;
         if (settings.defaultSize) {
           state.currentSize = settings.defaultSize;
@@ -902,7 +897,7 @@
         bgColor: DOM.settingBgColor ? DOM.settingBgColor.value : (isDarkMode ? '#0a0a0a' : '#ffffff'),
         defaultSize: DOM.settingDefaultSize ? parseInt(DOM.settingDefaultSize.value, 10) : 3
       };
-      localStorage.setItem('cnotas_settings', JSON.stringify(settings));
+      localStorage.setItem('cdraw_settings', JSON.stringify(settings));
       canvasConfig.bgColor = settings.bgColor;
       canvasConfig.size = settings.defaultSize;
       showToast('Configuración guardada');
@@ -915,11 +910,11 @@
       document.documentElement.style.setProperty('--color-primary-dark', theme.primaryDark);
       if (DOM.themeColor) DOM.themeColor.setAttribute('content', theme.primary);
       document.querySelectorAll('.color-option').forEach(btn => btn.classList.toggle('active', btn.dataset.color === color));
-      localStorage.setItem('cnotas_theme_color', color);
+      localStorage.setItem('cdraw_theme_color', color);
     }
 
     function loadThemeColor() {
-      const savedColor = localStorage.getItem('cnotas_theme_color');
+      const savedColor = localStorage.getItem('cdraw_theme_color');
       if (savedColor) changeThemeColor(savedColor);
     }
 
@@ -941,19 +936,18 @@
       isDarkMode = enabled;
       if (enabled) document.body.classList.add('dark-mode');
       else document.body.classList.remove('dark-mode');
-      localStorage.setItem('cnotas_dark_mode', enabled ? 'true' : 'false');
+      localStorage.setItem('cdraw_dark_mode', enabled ? 'true' : 'false');
       if (DOM.darkModeToggle) DOM.darkModeToggle.checked = enabled;
       applyModeDefaults();
-      const savedColor = localStorage.getItem('cnotas_theme_color') || '#0d4f7a';
+      const savedColor = localStorage.getItem('cdraw_theme_color') || '#0d4f7a';
       changeThemeColor(savedColor);
     }
 
     function loadDarkMode() {
-      const isDark = localStorage.getItem('cnotas_dark_mode') === 'true';
+      const isDark = localStorage.getItem('cdraw_dark_mode') === 'true';
       toggleDarkMode(isDark);
     }
 
-    // --- PANEL DE OPCIONES ---
     function showOptionsPanel(type) {
       if (!DOM.optionsPanelContent) return;
       DOM.optionsPanelContent.innerHTML = '';
@@ -1001,7 +995,6 @@
       DOM.optionsPanelContent.appendChild(group);
     }
 
-    // --- EVENT LISTENERS ---
     function bindEvents() {
       if (DOM.menuBtn) DOM.menuBtn.addEventListener('click', e => { e.stopPropagation(); openMenu(); });
       if (DOM.menuOverlay) DOM.menuOverlay.addEventListener('click', closeMenu);
@@ -1011,7 +1004,6 @@
         if (target) { e.preventDefault(); e.stopPropagation(); const viewName = target.getAttribute('data-view'); if (viewName) navigateTo(viewName); }
       });
 
-      // Lógica de pulsación larga para el botón de guardar
       let saveHoldTimer = null;
       let isHoldingSave = false;
       let saveClicked = false;
@@ -1061,7 +1053,6 @@
         });
       }
 
-      // Sin popups: acción directa con opción de deshacer
       if (DOM.btnClear) DOM.btnClear.addEventListener('click', e => { 
         e.stopPropagation(); 
         clearCanvasAction(); 
@@ -1118,7 +1109,7 @@
             const keyword = state.editingMagicKeyword;
             const md = getMagicDrawings();
             md[keyword] = exportImage();
-            localStorage.setItem('cnotas_magic_drawings', JSON.stringify(md));
+            localStorage.setItem('cdraw_magic_drawings', JSON.stringify(md));
             state.editingMagicKeyword = null;
             DOM.magicKeywordInput.value = '';
             DOM.magicKeywordInput.readOnly = false;
@@ -1144,7 +1135,7 @@
               md[esToEn[keyword]] = md[keyword];
             }
             
-            localStorage.setItem('cnotas_magic_drawings', JSON.stringify(md));
+            localStorage.setItem('cdraw_magic_drawings', JSON.stringify(md));
             DOM.magicKeywordInput.value = '';
             renderMagicDrawingsList();
             showToast(`"${keyword}" guardado`);
@@ -1154,11 +1145,11 @@
 
       if (DOM.btnClearAllData) DOM.btnClearAllData.addEventListener('click', e => { 
         e.stopPropagation(); 
-        localStorage.removeItem('cnotas_gallery'); 
-        localStorage.removeItem('cnotas_settings'); 
-        localStorage.removeItem('cnotas_theme_color'); 
-        localStorage.removeItem('cnotas_dark_mode');
-        localStorage.removeItem('cnotas_magic_drawings');
+        localStorage.removeItem('cdraw_gallery'); 
+        localStorage.removeItem('cdraw_settings'); 
+        localStorage.removeItem('cdraw_theme_color'); 
+        localStorage.removeItem('cdraw_dark_mode');
+        localStorage.removeItem('cdraw_magic_drawings');
         showToast('Datos borrados'); 
         setTimeout(() => location.reload(), 800); 
       });
